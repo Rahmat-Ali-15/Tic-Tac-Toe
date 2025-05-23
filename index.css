@@ -50,3 +50,8 @@
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
+
+.win_msg{
+    font-size: 28px;
+    font-weight: 500;
+}
