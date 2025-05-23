@@ -32,7 +32,11 @@ boxes.forEach((box) => {
             turnO = true;
         }
         box.disabled = true;
-        CheckWinner();
+        const isWinner = CheckWinner();  // Check if there's a winner
+
+        if (!isWinner) {
+        checkTie();  // Only check for tie if no winner
+        }      
     });
 });
 
@@ -62,12 +66,27 @@ const CheckWinner = () => {
 
         if(pos1Val !== "" && pos2Val !== "" && pos3Val !== ""){
             if(pos1Val === pos2Val && pos2Val === pos3Val){
-                // console.log("winner", pos1Val);
                 ShowWinner(pos1Val);
+                return true;
             }
         }
 
     }
+    return false;
 };
+
+function checkTie() {
+  let isFull = true;
+
+  boxes.forEach(box => {
+    if (box.textContent === "") {
+      isFull = false;
+    }
+  });
+
+  if (isFull) {
+    win_msg.innerText = "Game tied! Play again!";
+  }
+}
 
 reset_game.addEventListener("click", resetGame);
